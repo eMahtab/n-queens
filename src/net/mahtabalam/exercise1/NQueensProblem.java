@@ -45,7 +45,6 @@ public class NQueensProblem {
 	}
 
 	private boolean isPlaceValid(int rowIndex, int colIndex) {
-
 		for (int i = 0; i < colIndex; i++)
 			if (chessBoard[rowIndex][i] == 1)
 				return false;
@@ -59,7 +58,6 @@ public class NQueensProblem {
 			if (chessBoard[i][j] == 1)
 				return false;
 		}
-
 		return true;
 	}
 
