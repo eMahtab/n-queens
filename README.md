@@ -16,44 +16,45 @@ class Solution {
     }
     
     private void placeQueen(int[][] chessboard, int colIndex, List<List<String>> result) {
-		if (colIndex == chessboard.length) {
-			addResult(chessboard, result);
-		} else {
-            for (int rowIndex = 0; rowIndex < chessboard.length; rowIndex++) {
+	 if (colIndex == chessboard.length) {
+		addResult(chessboard, result);
+	 } else {
+              for (int rowIndex = 0; rowIndex < chessboard.length; rowIndex++) {
                 if (isPlaceValid(chessboard, rowIndex, colIndex)) {
                     chessboard[rowIndex][colIndex] = 1;
                     placeQueen(chessboard, colIndex + 1, result);
                     chessboard[rowIndex][colIndex] = 0;
-                }    
-		     }
-        }
-	}
+                 }    
+	      }
+         }
+    }
     
     private boolean isPlaceValid(int[][] chessboard, int rowIndex, int colIndex) {
-		for (int i = 0; i < colIndex; i++)
-			if (chessboard[rowIndex][i] == 1)
-				return false;
-		for (int i = rowIndex, j = colIndex; i >= 0 && j >= 0; i--, j--) {
-			if (chessboard[i][j] == 1)
-				return false;
-		}
-		for (int i = rowIndex, j = colIndex; i < chessboard.length && j >= 0; i++, j--) {
-			if (chessboard[i][j] == 1)
-				return false;
-		}
-		return true;
-	}
+	 for (int i = 0; i < colIndex; i++) {
+		if (chessboard[rowIndex][i] == 1)
+			return false;
+	 }			
+	 for (int i = rowIndex, j = colIndex; i >= 0 && j >= 0; i--, j--) {
+		if (chessboard[i][j] == 1)
+			return false;
+	 }
+	 for (int i = rowIndex, j = colIndex; i < chessboard.length && j >= 0; i++, j--) {
+		if (chessboard[i][j] == 1)
+			return false;
+	 }
+	return true;
+    }
     
     private void addResult(int[][] chessboard, List<List<String>> result) {
         List<String> list = new ArrayList<>();
-		for (int i = 0; i < chessboard.length; i++) {
+	for (int i = 0; i < chessboard.length; i++) {
             String str = "";
-			for (int j = 0; j < chessboard.length; j++) {
-				 str += (chessboard[i][j] == 1) ? "Q" : ".";
-			}
+	    for (int j = 0; j < chessboard.length; j++) {
+		str += (chessboard[i][j] == 1) ? "Q" : ".";
+	    }
             list.add(str);
-		}
-	    result.add(list);	
 	}
+       result.add(list);	
+    }
 }
 ```
